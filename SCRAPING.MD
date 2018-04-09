@@ -1,7 +1,8 @@
 # How to scrape
 
-Go the the url 'https://www.theinfatuation.com/new-york#finder' and then look
-at the XHR requests to find the search api url which is 'https://www.theinfatuation.com/api/v1/venues/search?lat='
+Go the the url 'https://www.theinfatuation.com/new-york#finder', scroll to the bottom of the page
+and click on the 'next 40 results button'. Then bring up the XHR requests dashboard and look
+for search api url which is 'https://www.theinfatuation.com/api/v1/venues/search?lat='
 
 This will give you a nice json response which can be used to grab the links for
 all of the reviews and other useful information.
