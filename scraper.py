@@ -66,10 +66,9 @@ def review_scraper(data_df):
 if __name__ == '__main__':
     # Read in city data
     city_df = pd.read_pickle('data/city_df.pickle')
-    city_names = city_df['city.name']
+    city_names = city_df['city.slug']
 
-
-    # Downlaod data on individual cities
+    # Download data on individual cities
     df_list = []
     for name in city_names:
         df = city_scraper(name, city_df)

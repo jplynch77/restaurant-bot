@@ -62,38 +62,3 @@ review_df = review_response_list(temp)
 # review_df.to_pickle('data/review_df.pickle')
 
 
-
-#######################################
-# Word and vectorizer analysis
-#######################################
-
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
-from sklearn.preprocessing import LabelEncoder
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-
-# df_train = df.iloc[:4000]
-# df_test = df.iloc[4000:]
-
-cv = CountVectorizer(max_features=200)
-tv = TfidfVectorizer(max_features=3000)
-X = tv.fit_transform(df2['review'])
-
-# Want to classify document by author using logistic regression
-# with count vectorizer
-le = LabelEncoder()
-y = le.fit_transform(df2['author'])
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.1)
-
-logreg = LogisticRegression(solver='newton-cg', multi_class='multinomial')
-logreg.fit(X_train, y_train)
-
-preds = logreg.predict(X_train)
-accuracy_score(y_train, preds)
-
-test_preds = logreg.predict(X_test)
-accuracy_score(y_test, test_preds)
-
-
